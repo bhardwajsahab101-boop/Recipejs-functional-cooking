@@ -1,88 +1,98 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
-  line-height: 1.6;
-}
-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  text-align: center;
-  padding: 2rem 1rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-/* Main Container */
-main {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-/* Recipe Container - Flexbox Grid */
-#recipe-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
-}
 /* Recipe Card */
 .recipe-card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  width: 300px;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-.recipe-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-}
-.recipe-card h3 {
-  color: #667eea;
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+    background: #fff;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.recipe-meta {
-  display: flex;
-  gap: 1rem;
-  margin: 0.75rem 0;
-  font-size: 0.9rem;
-  color: #666;
+/* Buttons */
+.card-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
 }
 
-.recipe-card p {
-  color: #555;
-  line-height: 1.5;
+.toggle-btn {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background: #f5f5f5;
 }
 
-.difficulty {
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: bold;
+.toggle-btn:hover {
+    background: #eaeaea;
 }
 
-/* .difficulty.easy {
-    background-color: #d4edda;
-    color: #155724;
-} */
+/* Ingredients */
+.ingredients-container {
+    display: none;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
 
-/* .difficulty.medium {
+.ingredients-container.visible {
+    display: block;
+}
 
-} */
+.ingredients-container li::before {
+    content: "✓ ";
+    color: #667eea;
+}
 
-.difficulty.hard {
-  /* TODO: Add red background and dark red text */
-  background: linear-gradient(180deg, #f8d7da, #721c24);
+/* Steps */
+.steps-container {
+    display: none;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #eef4ff;
+    border-radius: 8px;
+}
 
-  /* Use: background #f8d7da, color #721c24 */
+.steps-container.visible {
+    display: block;
+}
+
+/* Steps list */
+.steps-list {
+    list-style: none;
+    padding: 0;
+    counter-reset: step;
+}
+
+.steps-list > li {
+    counter-increment: step;
+    padding-left: 2rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.steps-list > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    background: #667eea;
+    color: #fff;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    text-align: center;
+}
+
+/* Nested Steps */
+.substeps-list {
+    list-style: none;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+    border-left: 2px solid #667eea;
+}
+
+.substeps-list li::before {
+    content: "→ ";
+    color: #667eea;
 }
