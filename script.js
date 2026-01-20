@@ -92,3 +92,5 @@ const renderRecipes = (recipesToRender) => {
 
 // Render recipes on page load
 renderRecipes(recipes);
+
+
